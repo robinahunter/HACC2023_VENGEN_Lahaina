@@ -24,7 +24,8 @@
     "react-dropzone": "^14.2.3",
     "react-icons": "^4.11.0",
     "react-router": "^6.14.1",
-    "react-router-dom": "^6.14.1",
+    "react-router-dom": "^6.21.3",
+    "react-scripts": "^5.0.1",
     "simpl-schema": "^3.4.1",
     "styled-components": "^6.1.0",
     "sweetalert": "^2.1.2",
@@ -50,6 +51,7 @@
   },
   "scripts": {
     "start": "meteor --no-release-check --exclude-archs web.browser.legacy,web.cordova --settings ../config/settings.development.json",
+    "dev": "meteor --settings ../config/settings.development.json",
     "lint": "eslint --quiet --ext .jsx --ext .js ./imports && eslint --quiet --ext .js ./tests",
     "lint-fix": "eslint --quiet --fix --ext .jsx --ext .js ./imports && eslint --quiet --ext .js ./tests",
     "testcafe": "testcafe chrome tests/*.testcafe.js",

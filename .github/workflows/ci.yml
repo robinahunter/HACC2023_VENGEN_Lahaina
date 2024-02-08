@@ -11,31 +11,25 @@ defaults:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: local
 
     steps:
-      - uses: actions/checkout@v3
-
       - name: Cache node modules
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-v5-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        run: |
+          # Your local cache logic goes here
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16.x'
+      - name: Setup Node.js
+        run: |
+          # Your local Node.js setup logic goes here
 
-      - run: npm ci --legacy-peer-deps
+      - name: Install npm dependencies
+        run: npm ci --legacy-peer-deps
 
-      - run: curl https://install.meteor.com/ | sh
+      - name: Install Meteor
+        run: curl https://install.meteor.com/ | sh
 
       - name: Run Meteor commands
-        shell: bash -l {0}
         run: |
           meteor npm install
           meteor npm run lint
-#          meteor npm run testcafe-ci
+          # meteor npm run testcafe-ci (Uncomment if needed)
